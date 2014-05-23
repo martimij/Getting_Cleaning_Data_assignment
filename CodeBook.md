@@ -26,7 +26,7 @@ Description of steps I took to get, combine and reshape the data
 
 1. Reading the file with variable names and cleaning names
 ```{r}
-features <- read.table("features.txt", colClasses="character") 
+features <- read.table("./UCI HAR Dataset/features.txt", colClasses="character") 
 features <- features[,2] 
 clean_features <- gsub("\\()", "", features) 
 clean_features <- gsub("-", ".", clean_features)
@@ -36,9 +36,9 @@ clean_features <- gsub("\\(", ".", clean_features)
 ```
 2. Read files with activity labels
 ```{r}
-activity_labels <- read.table("activity_labels.txt", colClasses="character")
-Y_test <- read.table("test/y_test.txt", colClasses="factor")
-Y_train <- read.table("train/y_train.txt", colClasses="factor")
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt", colClasses="character")
+Y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", colClasses="factor")
+Y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", colClasses="factor")
 ```
 
 3. Merging activity lables for training and test datasets
@@ -48,15 +48,15 @@ Y_combined <- rbind(Y_train, Y_test)
 
 4. Reading and merging the training and test data
 ```{r}
-train_data <- read.table("train/X_train.txt")
-test_data <- read.table("test/X_test.txt")
+train_data <- read.table("./UCI HAR Dataset/train/X_train.txt")
+test_data <- read.table("./UCI HAR Dataset/test/X_test.txt")
 data_combined <- rbind(train_data, test_data)
 ```
 
 5. Reading and merging the data with subject IDs
 ```{r}
-subjects_train <- read.table("train/subject_train.txt", colClasses="factor")
-subjects_test <- read.table("test/subject_test.txt", colClasses="factor")
+subjects_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", colClasses="factor")
+subjects_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", colClasses="factor")
 subjects_combined <- rbind(subjects_train,subjects_test)
 ```
 

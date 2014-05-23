@@ -1,6 +1,6 @@
 
 # Read the file with variable names
-features <- read.table("features.txt", colClasses="character") 
+features <- read.table("./UCI HAR Dataset/features.txt", colClasses="character") 
 features <- features[,2]  # extract only the 2nd column that contains the variable names
 
 # Clean up variable names
@@ -11,21 +11,21 @@ clean_features <- gsub(")", "", clean_features)
 clean_features <- gsub("\\(", ".", clean_features)
 
 # Read files with activity labels
-activity_labels <- read.table("activity_labels.txt", colClasses="character") #activity label names
-Y_test <- read.table("test/y_test.txt", colClasses="factor") #activity labels
-Y_train <- read.table("train/y_train.txt", colClasses="factor") #activity labels
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt", colClasses="character") #activity label names
+Y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", colClasses="factor") #activity labels
+Y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", colClasses="factor") #activity labels
 
 # Merge activity labes for training and test dataset
 Y_combined <- rbind(Y_train, Y_test)
 
 # Read and merge the training and test data
-train_data <- read.table("train/X_train.txt")
-test_data <- read.table("test/X_test.txt")
+train_data <- read.table("./UCI HAR Dataset/train/X_train.txt")
+test_data <- read.table("./UCI HAR Dataset/test/X_test.txt")
 data_combined <- rbind(train_data, test_data)
 
 # Read and merge the data with subject IDs
-subjects_train <- read.table("train/subject_train.txt", colClasses="factor")
-subjects_test <- read.table("test/subject_test.txt", colClasses="factor")
+subjects_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", colClasses="factor")
+subjects_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", colClasses="factor")
 subjects_combined <- rbind(subjects_train,subjects_test)
 
 # Add column (variable) names to the combined data set
